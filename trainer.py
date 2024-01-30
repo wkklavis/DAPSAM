@@ -100,8 +100,6 @@ def trainer_prostate(args, model, snapshot_path, multimask_output, low_res):
     best_performance = 0.0
     iterator = (range(max_epoch))
     for epoch_num in iterator:
-        # # result_list = inference(args=args, epoch=epoch_num, snapshot_path=snapshot_path, test_loader=valid_loader,
-        #                         model=model, test_save_path=None)
         logging.info('Epoch %d / %d' % (epoch_num, max_epoch))
         for batch, data in enumerate(trainloader):
             x, y = data['data'], data['mask']
@@ -143,14 +141,6 @@ def trainer_prostate(args, model, snapshot_path, multimask_output, low_res):
             result_list = inference(args=args, epoch=epoch_num, snapshot_path=snapshot_path, test_loader=valid_loader, model=model, test_save_path=None)
             writer.add_scalar('Valid_Dice', result_list[0], (epoch_num + 1) // save_interval)
             writer.add_scalar('Valid_ASD', result_list[1], (epoch_num + 1) // save_interval)
-
-            if result_list[0] > 0.8380 and result_list[0] < 0.8440:
-                #save model
-                save_mode_path = os.path.join(snapshot_path, 'epoch_' + str(epoch_num) + '.pth')
-                torch.save(model.state_dict(), save_mode_path)
-                logging.info("save model to {}".format(save_mode_path))
-                save_image(args=args, epoch=epoch_num, snapshot_path=snapshot_path, test_loader=valid_loader,
-                          model=model, test_save_path=None)
 
         if epoch_num >= max_epoch - 1 or epoch_num >= stop_epoch - 1:
 
