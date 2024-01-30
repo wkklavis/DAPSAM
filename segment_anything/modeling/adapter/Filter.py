@@ -87,19 +87,3 @@ class ChannelFilter(nn.Module):
         x = x.permute(0, 2, 3, 1)
         return x
 
-
-class LearnableFrequencyFilter(nn.Module):
-    def __init__(self, size, channel):
-        super(LearnableFrequencyFilter, self).__init__()
-
-        self.complex_weight = nn.Parameter(torch.randn(channel, 25, 48,  2, dtype=torch.float32) * 0.02)#Learnable filter
-
-    def forward(self, x):
-        N, C, H, W = x.shape
-
-        x = torch.fft.rfft2(x, dim=(1, 2), norm='ortho')
-        weight = torch.view_as_complex(self.complex_weight)
-        x = x * weight
-        x = torch.fft.irfft2(x, dim=(1, 2), norm='ortho')
-
-        return x
