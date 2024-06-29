@@ -10,8 +10,8 @@ import torch.nn.functional as F
 
 from typing import Optional, Tuple, Type
 
-from segment_anything.modeling.adapter.Adapter import Adapter
-from segment_anything.modeling.adapter.PromptGenerator import PromptGenerator
+from prostate.segment_anything.modeling.adapter.Adapter import Adapter
+from prostate.segment_anything.modeling.adapter.PromptGenerator import PromptGenerator
 
 
 class MLPBlock(nn.Module):

@@ -19,7 +19,7 @@ from datasets.prostate.PROSTATE_dataloader import PROSTATE_dataset
 from datasets.prostate.convert_csv_to_list import convert_labeled_list
 from datasets.prostate.normalize import normalize_image
 from datasets.prostate.transform import collate_fn_w_transform, collate_fn_wo_transform
-from test import inference, save_image
+from prostate.test import inference, save_image
 from utils import DiceLoss, Focal_loss, dice_coeff, bce_loss
 from torchvision import transforms
 
