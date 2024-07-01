@@ -80,7 +80,7 @@ class MemoryUnit(nn.Module):
 
 
 class PrototypePromptGenerate(nn.Module):
-    def __init__(self, mem_dim=256, embed_dim=256, image_embedding_size=24):
+    def __init__(self, mem_dim=256, embed_dim=256, image_embedding_size=32):
         super(PrototypePromptGenerate, self).__init__()
         self.memory_bank = MemoryUnit(mem_dim, embed_dim)
         self.pe_layer = PositionEmbeddingRandom(embed_dim // 2)
