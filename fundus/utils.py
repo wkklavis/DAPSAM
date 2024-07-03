@@ -156,16 +156,6 @@ def test_single_volume(image, label, net, classes, multimask_output, patch_size=
                 else:
                     pred = out
                 prediction[ind] = pred
-        # only for debug
-        # if not os.path.exists('/output/images/pred'):
-        #     os.makedirs('/output/images/pred')
-        # if not os.path.exists('/output/images/label'):
-        #     os.makedirs('/output/images/label')
-        # assert prediction.shape[0] == label.shape[0]
-        # for i in range(label.shape[0]):
-        #     imageio.imwrite(f'/output/images/pred/pred_{i}.png', prediction[i])
-        #     imageio.imwrite(f'/output/images/label/label_{i}.png', label[i])
-        # temp = input('kkpsa')
     else:
         x, y = image.shape[-2:]
         if x != patch_size[0] or y != patch_size[1]:

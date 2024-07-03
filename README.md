@@ -18,8 +18,7 @@ This is the official code of our MICCAI 2024 paper [DAPSAM](https://baidu.com) ð
 Please download the pretrained [SAM model](https://drive.google.com/file/d/1_oCdoEEu3mNhRfFxeWyRerOKt8OEUvcg/view?usp=share_link) 
 (provided by the original repository of SAM) and put it in the ./pretrained folder. 
 
-What's more, we also provide the [DAPSAM-PROSATE-RUNMC](https://drive.google.com/file/d/1rQM2md-h66RlRF3wC0m9N8aheOCvKfYv/view?usp=share_link),
-and the [DAPSAM-FUNDUS-BinRushed](https://drive.google.com/file/d/1rQM2md-h66RlRF3wC0m9N8aheOCvKfYv/view?usp=share_link). Please put it in the ./snapshot folder for evaluation. 
+What's more, we also provide well-trained models at [Release](https://github.com/wkklavis/DAPSAM/releases/tag/v1.0.0). Please put it in the ./snapshot folder for evaluation. 
 
 
 ## Prostate Segmentation

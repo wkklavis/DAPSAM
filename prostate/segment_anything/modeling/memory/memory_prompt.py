@@ -113,23 +113,7 @@ class PrototypePromptGenerate(nn.Module):
         cos_sim_map = cos_sim_map.unsqueeze(1)# b x 1 x h x w
 
         prompt = self.fuse_conv(torch.concat([feature, info_proto, cos_sim_map], dim=1))
-        # prompt = cos_sim_map * info_proto
 
         sparse_embeddings = torch.empty((1, 0, C), device=device)
         return sparse_embeddings, prompt
 
-class FeatureReconstruct(nn.Module):
-    def __init__(self, mem_dim=19, fea_dim=256):
-        super(FeatureReconstruct, self).__init__()
-        self.memory = MemoryUnit(mem_dim, fea_dim)
-        self.compress = nn.Conv2d(512,256,1)
-    def forward(self, feature):
-        N, C, H, W = feature.shape
-        x = feature.permute(0, 2, 3, 1)
-        x = x.contiguous()
-        x = x.view(-1, C)
-        y = self.memory(x)
-        y = y.view(N, H, W, C)
-        y = y.permute(0, 3, 1, 2)
-        feature = self.compress(torch.concat([feature, y],1))
-        return feature

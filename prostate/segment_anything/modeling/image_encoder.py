@@ -11,7 +11,7 @@ import torch.nn.functional as F
 from typing import Optional, Tuple, Type
 
 from segment_anything.modeling.adapter.Adapter import Adapter
-from segment_anything.modeling.adapter.PromptGenerator import PromptGenerator
+from segment_anything.modeling.adapter.LAdapter import LAdapter
 
 
 class MLPBlock(nn.Module):
@@ -140,7 +140,7 @@ class ImageEncoderViT(nn.Module):
 
         self.scale_factor = 4
         self.embed_dim = embed_dim
-        self.prompt_generator = PromptGenerator(self.scale_factor,
+        self.l_adapter = LAdapter(self.scale_factor,
                                                 self.embed_dim,
                                                 depth)
         self.scale = 0.5
@@ -152,11 +152,11 @@ class ImageEncoderViT(nn.Module):
         if self.pos_embed is not None:
             x = x + self.pos_embed
 
-        embedding_feature = self.prompt_generator.init_embeddings(x)
+        embedding_feature = self.l_adapter.init_embeddings(x)
 
         B, H, W = x.shape[0], x.shape[1], x.shape[2]
         for i, blk in enumerate(self.blocks):
-            prompt = self.prompt_generator.get_prompt(i, x, embedding_feature)#
+            prompt = self.l_adapter(i, x, embedding_feature)#
             x = prompt.reshape(B, H, W, -1) + x
             x = blk(x, embedding_feature)#
 
@@ -212,7 +212,7 @@ class Block(nn.Module):
         self.window_size = window_size
 
         #####
-        self.Channel_MLP_Adapter = Adapter(dim, skip_connect=False)  # MLP-adapter, no skip connection
+        self.channel_adapter = Adapter(dim, skip_connect=False)  # MLP-adapter, no skip connection
         self.scale = 0.5
 
     def forward(self, x: torch.Tensor, embedding_feature) -> torch.Tensor:#
@@ -231,7 +231,7 @@ class Block(nn.Module):
         ########
         x = shortcut + x
         xn = self.norm2(x)
-        x = x + self.mlp(xn) + self.scale * self.Channel_MLP_Adapter(xn, embedding_feature)#
+        x = x + self.mlp(xn) + self.scale * self.channel_adapter(xn, embedding_feature)#
 
         return x
 

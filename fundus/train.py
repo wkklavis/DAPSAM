@@ -13,7 +13,7 @@ from trainer import trainer_riga
 parser = argparse.ArgumentParser()
 parser.add_argument('--root_path', type=str,
                     default='/data/weizhikai/data/dataset/RIGAPlus', help='root dir for data')
-parser.add_argument('--output', type=str, default='./output/24-0628/DAPSAM')
+parser.add_argument('--output', type=str, default='./output/24-0628/DAPSAM-3')
 
 parser.add_argument('--dataset', type=str,
                     default='RIGA', help='experiment_name')

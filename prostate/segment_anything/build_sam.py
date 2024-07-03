@@ -136,7 +136,7 @@ def _build_sam(
 
         for name, value in sam.image_encoder.named_parameters():
             # freeze backbone except adapter
-            if "prompt_generator" not in name and "MLP_Adapter" not in name:#Adapter
+            if "adapter" not in name:#Adapter
                 value.requires_grad = False
 
     return sam, image_embedding_size

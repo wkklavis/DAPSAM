@@ -12,14 +12,14 @@ from trainer import trainer_prostate
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--root_path', type=str,
-                    default='E:\\data\\datasets\\prostate', help='root dir for data')
-parser.add_argument('--output', type=str, default='./output/1129/DAPSAM')
+                    default='/data/weizhikai/data/dataset/prostate', help='root dir for data')
+parser.add_argument('--output', type=str, default='./output/24-0626/DAPSAM-3')
 
 parser.add_argument('--dataset', type=str,
                     default='PROSTATE', help='experiment_name')
-parser.add_argument('--Source_Dataset', type=str, default='RUNMC_TRAIN',
+parser.add_argument('--Source_Dataset', type=str, default='RUNMC',
                     help='BIDMC/BMC/HK/I2CVB/RUNMC/UCL')
-parser.add_argument('--Target_Dataset', nargs='+', type=str, default=['RUNMC_TEST'],
+parser.add_argument('--Target_Dataset', nargs='+', type=str, default=['BIDMC','BMC','HK','I2CVB','UCL'],
                     help='BIDMC/BMC/HK/I2CVB/RUNMC/UCL')
 
 parser.add_argument('--num_classes', type=int,
@@ -32,7 +32,7 @@ parser.add_argument('--stop_epoch', type=int,
                     default=160, help='maximum epoch number to train')
 parser.add_argument('--batch_size', type=int,
                     default=8, help='batch_size per gpu')
-parser.add_argument('--num_workers', type=int, default=0)
+parser.add_argument('--num_workers', type=int, default=8)
 parser.add_argument('--n_gpu', type=int, default=1, help='total gpu')
 parser.add_argument('--deterministic', type=int, default=1,
                     help='whether use deterministic training')
@@ -43,10 +43,10 @@ parser.add_argument('--img_size', type=int,
 parser.add_argument('--seed', type=int,
                     default=1234, help='random seed')
 parser.add_argument('--vit_name', type=str,
-                    default='vit_h', help='select one vit model')
-parser.add_argument('--ckpt', type=str, default='./pretrained/sam_vit_h_4b8939.pth',#./pretrained/sam_vit_b_01ec64.pth#pretrained/sam_vit_h_4b8939.pth
+                    default='vit_b', help='select one vit model')
+parser.add_argument('--ckpt', type=str, default='./pretrained/sam_vit_b_01ec64.pth',#sam_vit_b_01ec64.pth#sam_vit_l_0b3195.pth#sam_vit_h_4b8939.pth
                     help='Pretrained checkpoint')
-parser.add_argument('--snapshot', type=str, default=None, help='model snapshot')#'snapshot/epoch_final.pth'
+parser.add_argument('--snapshot', type=str, default=None, help='model snapshot')
 
 parser.add_argument('--warmup', action='store_true', default=True, help='If activated, warp up the learning from a lower lr to the base_lr')
 parser.add_argument('--warmup_period', type=int, default=250,

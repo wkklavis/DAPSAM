@@ -23,12 +23,12 @@ def calc_mean_std(feat, eps=1e-5):
     return feat_mean, feat_std
 
 
-class PromptGenerator(nn.Module):
+class LAdapter(nn.Module):
     def __init__(self, scale_factor, embed_dim,  depth):
         """
         Args:
         """
-        super(PromptGenerator, self).__init__()
+        super(LAdapter, self).__init__()
         self.scale_factor = scale_factor
         self.embed_dim = embed_dim
         self.depth = depth
@@ -67,7 +67,7 @@ class PromptGenerator(nn.Module):
         embedding_feature = embedding_feature.permute(0, 2, 1).reshape(N, -1, H , W)
         return embedding_feature
 
-    def get_prompt(self, i, feature, embedding_feature):#
+    def forward(self, i, feature, embedding_feature):#
         N, C, H, W = embedding_feature.shape
         feature = feature.permute(0, 3, 1, 2)
         channel_filter = getattr(self, 'channel_filter_{}'.format(str(i)))

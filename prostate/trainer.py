@@ -19,7 +19,7 @@ from datasets.prostate.PROSTATE_dataloader import PROSTATE_dataset
 from datasets.prostate.convert_csv_to_list import convert_labeled_list
 from datasets.prostate.normalize import normalize_image
 from datasets.prostate.transform import collate_fn_w_transform, collate_fn_wo_transform
-from prostate.test import inference, save_image
+from test import inference
 from utils import DiceLoss, Focal_loss, dice_coeff, bce_loss
 from torchvision import transforms
 
@@ -144,15 +144,10 @@ def trainer_prostate(args, model, snapshot_path, multimask_output, low_res):
 
         if epoch_num >= max_epoch - 1 or epoch_num >= stop_epoch - 1:
 
-            #test
-            # result_list = inference(args=args, epoch='Final',snapshot_path=snapshot_path, test_loader=valid_loader, model=model, test_save_path=None)
-            # writer.add_scalar('Valid_Dice', result_list[0], (epoch_num + 1) // save_interval)
-            # writer.add_scalar('Valid_ASD', result_list[1], (epoch_num + 1) // save_interval)
-
-            #save model
-            # save_mode_path = os.path.join(snapshot_path, 'epoch_' + str(epoch_num) + '.pth')
-            # torch.save(model.state_dict(), save_mode_path)
-            # logging.info("save model to {}".format(save_mode_path))
+            # save model
+            save_mode_path = os.path.join(snapshot_path, 'epoch_' + str(epoch_num) + '.pth')
+            torch.save(model.state_dict(), save_mode_path)
+            logging.info("save model to {}".format(save_mode_path))
             break
 
     writer.close()
