@@ -28,9 +28,9 @@ We take the setting using RUNMC (source domain) and other five datasets (target 
 ```
 cd prostate
 # Training
-CUDA_VISIBLE_DEVICES=0 python train.py 
+CUDA_VISIBLE_DEVICES=0 python train.py --root_path dataset_path --output output_path --Source_Dataset RUNMC --Target_Dataset BIDMC BMC HK I2CVB UCL
 # Test
-CUDA_VISIBLE_DEVICES=0 python main.py 
+CUDA_VISIBLE_DEVICES=0 python test.py --root_path dataset_path --output_dir output_path --Source_Dataset RUNMC --Target_Dataset BIDMC BMC HK I2CVB UCL --snapshot snapshot_path
 ```
 
 
@@ -41,9 +41,9 @@ We take the setting using BinRushed (source domain) and other three datasets (ta
 ```
 cd fundus
 # Training
-CUDA_VISIBLE_DEVICES=0 python train.py 
+CUDA_VISIBLE_DEVICES=0 python train.py --root_path dataset_path --output output_path --Source_Dataset BinRushed --Target_Dataset MESSIDOR_Base1 MESSIDOR_Base2 MESSIDOR_Base3
 # Test
-CUDA_VISIBLE_DEVICES=0 python main.py 
+CUDA_VISIBLE_DEVICES=0 python test.py --root_path dataset_path --output output_path --Source_Dataset BinRushed --Target_Dataset MESSIDOR_Base1 MESSIDOR_Base2 MESSIDOR_Base3 --snapshot snapshot_path
 ```
 
 
@@ -56,4 +56,4 @@ If you find this code useful, please cite
 ## Acknowledgement
 
 We appreciate the developers of [Segment Anything Model](https://github.com/facebookresearch/segment-anything). 
-The code of DAPSAM is built upon [SAMed](https://github.com/hitachinsk/SAMed), and we express our gratitude to these awesome projects.
+The code of DAPSAM is built upon [SAMed](https://github.com/hitachinsk/SAMed), and we express our gratitude to these projects.

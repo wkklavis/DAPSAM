@@ -13,7 +13,7 @@ from trainer import trainer_prostate
 parser = argparse.ArgumentParser()
 parser.add_argument('--root_path', type=str,
                     default='/data/weizhikai/data/dataset/prostate', help='root dir for data')
-parser.add_argument('--output', type=str, default='./output/24-0626/DAPSAM-3')
+parser.add_argument('--output', type=str, default='./output/DAPSAM')
 
 parser.add_argument('--dataset', type=str,
                     default='PROSTATE', help='experiment_name')

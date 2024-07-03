@@ -103,7 +103,7 @@ if __name__ == '__main__':
                         help='BIDMC/BMC/HK/I2CVB/RUNMC/UCL')
     parser.add_argument('--num_classes', type=int, default=1)
 
-    parser.add_argument('--output_dir', type=str, default='/output')
+    parser.add_argument('--output', type=str, default='/output')
     parser.add_argument('--img_size', type=int, default=384, help='Input image size of the network')
 
     parser.add_argument('--seed', type=int,
@@ -139,8 +139,8 @@ if __name__ == '__main__':
 
         }
     }
-    if not os.path.exists(args.output_dir):
-        os.makedirs(args.output_dir)
+    if not os.path.exists(args.output):
+        os.makedirs(args.output)
 
     # register model
     sam, img_embedding_size = sam_model_registry[args.vit_name](image_size=args.img_size,
@@ -175,7 +175,7 @@ if __name__ == '__main__':
         multimask_output = False
 
     # initialize log
-    log_folder = os.path.join(args.output_dir, 'test_log')
+    log_folder = os.path.join(args.output, 'test_log')
     os.makedirs(log_folder, exist_ok=True)
     logging.basicConfig(filename=log_folder + '/' + 'log.txt', level=logging.INFO,
                         format='[%(asctime)s.%(msecs)03d] %(message)s', datefmt='%H:%M:%S')
