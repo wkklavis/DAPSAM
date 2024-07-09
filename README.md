@@ -1,6 +1,6 @@
 # Prompting Segment Anything Model with Domain-Adaptive Prototype for Generalizable Medical Image Segmentation (DAPSAM)
 
-This is the official code of our MICCAI 2024 paper [DAPSAM](https://baidu.com) 🥳
+This is the official code of our MICCAI 2024 paper DAPSAM 🥳
 
 <div align=center>
 	<img src="figures/pipeline.png" width=75%/>
