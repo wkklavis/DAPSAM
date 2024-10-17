@@ -1,6 +1,6 @@
 # Prompting Segment Anything Model with Domain-Adaptive Prototype for Generalizable Medical Image Segmentation (DAPSAM)
 
-This is the official code of our MICCAI 2024 paper DAPSAM 🥳
+This is the official code of our MICCAI 2024 paper [DAPSAM](https://arxiv.org/pdf/2409.12522) 🥳
 
 <div align=center>
 	<img src="figures/pipeline.png" width=75%/>
@@ -50,7 +50,14 @@ CUDA_VISIBLE_DEVICES=0 python test.py --root_path dataset_path --output output_p
 ## Cite 
 If you find this code useful, please cite
 ~~~
-
+@inproceedings{wei2024prompting,
+  title={Prompting Segment Anything Model with Domain-Adaptive Prototype for Generalizable Medical Image Segmentation},
+  author={Wei, Zhikai and Dong, Wenhui and Zhou, Peilin and Gu, Yuliang and Zhao, Zhou and Xu, Yongchao},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={533--543},
+  year={2024},
+  organization={Springer}
+}
 ~~~
 
 ## Acknowledgement
