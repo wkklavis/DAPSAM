@@ -1,0 +1,14 @@
+image,mask
+UCL/Case01.nii.gz,UCL/Case01_segmentation.nii.gz
+UCL/Case26.nii.gz,UCL/Case26_segmentation.nii.gz
+UCL/Case27.nii.gz,UCL/Case27_segmentation.nii.gz
+UCL/Case28.nii.gz,UCL/Case28_segmentation.nii.gz
+UCL/Case29.nii.gz,UCL/Case29_segmentation.nii.gz
+UCL/Case30.nii.gz,UCL/Case30_segmentation.nii.gz
+UCL/Case31.nii.gz,UCL/Case31_segmentation.nii.gz
+UCL/Case32.nii.gz,UCL/Case32_segmentation.nii.gz
+UCL/Case33.nii.gz,UCL/Case33_segmentation.nii.gz
+UCL/Case34.nii.gz,UCL/Case34_segmentation.nii.gz
+UCL/Case35.nii.gz,UCL/Case35_segmentation.nii.gz
+UCL/Case36.nii.gz,UCL/Case36_segmentation.nii.gz
+UCL/Case37.nii.gz,UCL/Case37_segmentation.nii.gz
